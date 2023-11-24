@@ -14,12 +14,13 @@ class App extends StatelessWidget {
       theme: ThemeData(
         textTheme: const TextTheme(
           displayLarge: TextStyle(
-            color: Color(0xFF232B55),
+            color: Color(0xFFE64D3D),
           ),
         ),
         cardColor: const Color(0xFFF4EDDB),
-        colorScheme:
-            ColorScheme.fromSwatch(backgroundColor: const Color(0xFFE7626C)),
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: const Color(0xFFE64D3D),
+        ),
       ),
       home: const HomeScreen(),
     );
