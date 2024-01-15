@@ -96,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Flexible(
               flex: 1,
               child: Container(
+                height: 80,
                 alignment: Alignment.topLeft,
                 child: const Text(
                   "POMOTIMER",
@@ -115,44 +116,53 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold),
             ),
             Flexible(
-              flex: 1,
+              flex: 2,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    height: 100,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     child: Text(
                       formatMin(totalSeconds),
                       style: TextStyle(
                         color: Theme.of(context).textTheme.displayLarge!.color,
-                        fontSize: 90,
+                        fontSize: 70,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Container(
+                    height: 100,
+                    width: 30,
+                    alignment: Alignment.center,
                     child: Text(
                       ":",
                       style: TextStyle(
-                        color: Theme.of(context).cardColor.withOpacity(0.5),
-                        fontSize: 100,
+                        color: Theme.of(context).cardColor,
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Container(
+                    height: 100,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     child: Text(
                       formatSecond(totalSeconds),
                       style: TextStyle(
                         color: Theme.of(context).textTheme.displayLarge!.color,
-                        fontSize: 90,
+                        fontSize: 70,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -160,17 +170,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             Flexible(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-              child: TimeMenu(
-                onTimeSelected: (seconds) {
-                  setState(() {
-                    totalSeconds = seconds;
-                  });
-                },
-              ),
-            )),
+                flex: 1,
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                  child: TimeMenu(
+                    onTimeSelected: (seconds) {
+                      setState(() {
+                        totalSeconds = seconds;
+                      });
+                    },
+                  ),
+                )),
+            const SizedBox(
+              height: 20,
+            ),
             Flexible(
               flex: 2,
               child: Row(
@@ -178,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     IconButton(
                       color: Theme.of(context).cardColor,
-                      iconSize: 90,
+                      iconSize: 60,
                       onPressed: isRunning ? onPressedPaused : onStartPressed,
                       icon: Icon(
                         isRunning
@@ -188,7 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     IconButton(
                         color: Theme.of(context).cardColor,
-                        iconSize: 90,
+                        iconSize: 60,
                         onPressed: onResetPressed,
                         icon: const Icon(Icons.refresh))
                   ]),
@@ -280,13 +298,14 @@ class _TimeMenuState extends State<TimeMenu> {
                 timeSelection[index] * 60); // Convert minutes to seconds
           },
           child: Container(
-            width: 80.0,
-            height: 5.0,
+            width: 80,
+            height: 80,
             margin: const EdgeInsets.symmetric(horizontal: 5.0),
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: Theme.of(context).cardColor,
-                width: 5,
+                width: 3,
               ),
             ),
             child: Center(
